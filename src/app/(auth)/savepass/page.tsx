@@ -31,7 +31,7 @@ const userschema = z.object({
       .min(8, "Password must have at least 8 characters"),
 });
 
-const page = () => {
+const Page = () => {
   const router = useRouter();
 
   const user = useForm<z.infer<typeof userschema>>({
@@ -152,4 +152,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page

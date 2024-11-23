@@ -23,7 +23,7 @@ const formSchema = z.object({
     }).max(6,"INVALID OTP"),
 })
 
-const page = () => {
+const Page = () => {
 
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
@@ -96,4 +96,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page

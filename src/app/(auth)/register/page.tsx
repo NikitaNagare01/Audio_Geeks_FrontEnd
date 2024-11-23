@@ -1,7 +1,7 @@
 
 import Register from '../../../components/form/Register'
 
-const page = () => {
+const Page = () => {
   return (
     <div className="w-full mt-[2rem]">
       <Register/>
@@ -9,4 +9,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page

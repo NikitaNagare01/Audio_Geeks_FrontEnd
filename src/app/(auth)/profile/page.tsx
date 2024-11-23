@@ -54,7 +54,7 @@ import { useDispatch } from 'react-redux'
 import {Changeloggedinstate} from '@/provider/redux/loggedin'
 
 
-const page = () => {
+const Page = () => {
   
   const router = useRouter();
   const pathname : string = usePathname();
@@ -335,4 +335,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page

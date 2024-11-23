@@ -120,7 +120,7 @@ import { Slider } from '@/components/Slider'
 import React from 'react'
 
 
-const page = () => {
+const Page = () => {
   return (
     <div className='mt-[10rem]'>
       {/* <div className='flex items-center justify-center h-screen  flex-col'>
@@ -137,4 +137,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page
