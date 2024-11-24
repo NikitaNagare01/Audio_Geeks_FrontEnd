@@ -52,6 +52,7 @@ import Notificationprofile from '../(components)/Notificationprofile'
 import { headers } from 'next/headers'
 import { useDispatch } from 'react-redux'
 import {Changeloggedinstate} from '@/provider/redux/loggedin'
+import { changerolestate } from '@/provider/redux/role'
 
 
 const Page = () => {
@@ -73,7 +74,9 @@ const Page = () => {
 
   const logout =()=>{
     localStorage.removeItem('token');
-    dispatch(Changeloggedinstate(false))
+    localStorage.removeItem('role');
+    dispatch(Changeloggedinstate(null));
+    dispatch(changerolestate(null));
     router.push("/login");
   }
   
@@ -312,13 +315,9 @@ const Page = () => {
                 Tour
               </h3>
             ) : 
-
             <div>
               <Myprofile profile={profile}/>
             </div>
-
-              
-
             }
             
             <p className="text-sm text-muted-foreground">

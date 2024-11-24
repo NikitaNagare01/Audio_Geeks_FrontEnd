@@ -29,6 +29,7 @@ import {
 } from "@/components/ui/select";
 import { useState } from "react";
 import { Value } from "@radix-ui/react-select";
+import { useSelector } from "react-redux";
 
 const formSchema = z
   .object({
@@ -78,6 +79,8 @@ const Register = () => {
   const [msg, setmsg] = useState("");
 
   const [username, setusername] = useState("");
+
+  const role = useSelector((state:any)=> state.rolestate.role);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -222,16 +225,21 @@ const Register = () => {
                             </SelectTrigger>
                           </FormControl>
                           <SelectContent>
+                            {role=="Admin" ? (<div>
                             <SelectItem value="Admin">Admin</SelectItem>
-                            <SelectItem value="Tour Manager">
-                              Tour Manager
-                            </SelectItem>
-                            <SelectItem value="Brand Manager">
+                            <SelectItem  value="Brand Manager">
                               Brand Manager
                             </SelectItem>
                             <SelectItem value="Audiophile">
                               Audiophile
                             </SelectItem>
+                            </div>) :(
+                            <div>
+                              <SelectItem value="Audiophile">
+                              Audiophile
+                            </SelectItem>
+                            </div>)
+                            }
                           </SelectContent>
                         </Select>
 

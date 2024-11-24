@@ -2,9 +2,8 @@ import { createSlice } from "@reduxjs/toolkit";
 
 let r = null;
 
-if(typeof window !=="undefined"){
-    r=localStorage.getItem('role');
-}
+
+
 
 export const rolestate = createSlice({
     name:'rolestate',

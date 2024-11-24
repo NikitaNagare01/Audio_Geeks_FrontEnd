@@ -70,7 +70,7 @@ const Login = () => {
         localStorage.setItem('token', data.token);
         localStorage.setItem('role', data.role);
         console.log(data);
-        dispatch(Changeloggedinstate(true));
+        dispatch(Changeloggedinstate(data.token));
         dispatch(changerolestate(data.role));
         alert(data.message);
         rout.push("/");

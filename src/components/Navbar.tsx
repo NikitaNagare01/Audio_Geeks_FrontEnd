@@ -3,13 +3,21 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import clsx from "clsx";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { changerolestate } from "@/provider/redux/role";
+import { Changeloggedinstate } from "@/provider/redux/loggedin";
 
 const Navbar = () => {
   const [token, setToken] = useState<string | null>(null);
+
+  const dispatch= useDispatch();
+
   useEffect(() => {
     // alert()
     const tk: string | null = localStorage.getItem("token");
+
+    dispatch(changerolestate(localStorage.getItem('role')));
+    dispatch(Changeloggedinstate(localStorage.getItem('token')));
 
     setToken(tk);
   }, []);
@@ -42,6 +50,8 @@ const Navbar = () => {
             </a>
           </div>
           <div className="hidden md:flex space-x-4">
+
+
             <Link
               href="/"
               className={clsx(" hover:text-white", {
@@ -50,19 +60,28 @@ const Navbar = () => {
             >
               Home
             </Link>
+              {role==="Brand Manager" || role ==="Admin" && 
+              <Link
+                href="/brandmanager"
+                className={clsx(" hover:text-white", {
+                  "hover:text-white font-bold": path === "/brandmanager",
+                })}
+              >
+                Manage Brand
+              </Link>}
             <Link
-              href="about"
+              href="/about"
               className={clsx(" hover:text-white", {
                 "hover:text-white font-bold": path === "/about",
               })}
             >
               About
             </Link>
-            {state || token ? (
+            {state  ? (
               <div>
               
               <Link
-              href="profile"
+              href="/profile"
               className={clsx(" hover:text-white", {
                 "hover:text-white font-bold": path === "/profile",
               })}
@@ -73,7 +92,7 @@ const Navbar = () => {
             ) : (
               <div>
               <Link
-                href="login"
+                href="/login"
                 className={clsx(" hover:text-white", {
                   "hover:text-white font-bold": path === "/login",
                 })}
@@ -83,9 +102,9 @@ const Navbar = () => {
               
               </div>
             )}
-            {state || token ?(<div></div>):(
+            {state  ?(<div></div>):(
               <Link
-              href="register"
+              href="/register"
               className={clsx(" hover:text-white", {
                 "hover:text-white font-bold": path === "/register",
               })}
@@ -128,8 +147,20 @@ const Navbar = () => {
             >
               Home
             </Link>
+
+              {role==="Brand Manager" || role ==="Admin" && 
+              <Link
+                href="/brandmanager"
+                className={clsx("block hover:text-white", {
+                  "hover:text-white font-bold": path === "/brandmanager",
+                })}
+              >
+                Manage Brand
+              </Link>}
+
+
             <Link
-              href="about"
+              href="/about"
               className={clsx("block hover:text-white", {
                 "block hover:text-white font-bold": path === "/about",
               })}
@@ -139,7 +170,7 @@ const Navbar = () => {
             {state || token ? (
               <div>
               <Link
-              href="profile"
+              href="/profile"
               className={clsx(" hover:text-white", {
                 "hover:text-white font-bold": path === "/profile",
               })}
@@ -150,7 +181,7 @@ const Navbar = () => {
             ) : (
               <div>
               <Link
-                href="login"
+                href="/login"
                 className={clsx(" hover:text-white", {
                   "hover:text-white font-bold": path === "/login",
                 })}
@@ -161,7 +192,7 @@ const Navbar = () => {
             )}
             {state || token ?(<div></div>):(
               <Link
-              href="register"
+              href="/register"
               className={clsx(" hover:text-white", {
                 "hover:text-white font-bold": path === "/register",
               })}
