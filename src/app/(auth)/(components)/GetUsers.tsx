@@ -53,7 +53,7 @@ const GetUsers = () => {
     useEffect(()=>{
         fetchData();
     }
-    ,[])
+    ,[fetchData])
 
     useEffect(()=>{
 
