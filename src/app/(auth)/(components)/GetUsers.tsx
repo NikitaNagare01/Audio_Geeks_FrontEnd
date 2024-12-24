@@ -27,7 +27,7 @@ const GetUsers = () => {
 
     const token =" Bearer "+localStorage.getItem('token');
 
-    const fetchData =async()=>{
+    const fetchData =React.useCallback(async()=>{
         try {
             const response =await fetch('https://audiogeeks.onrender.com/admin/all_users',
                 {
@@ -48,7 +48,7 @@ const GetUsers = () => {
         }catch (error) {
             seterror('An error occurred while fetching users.');
         }
-    }
+    },[token]);
 
     useEffect(()=>{
         fetchData();
