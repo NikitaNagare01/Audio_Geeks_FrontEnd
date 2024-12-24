@@ -137,7 +137,7 @@ const GetUsers = () => {
                         {admins.map((ele:any)=>(
                             
 
-                            <div key={ele._id} className='flex-1  p-6  shadow-md rounded-md'>
+                            <div key={`${ele.first_name}-${ele.last_name}`} className='flex-1  p-6  shadow-md rounded-md'>
 
                                 <Card>
                                 <CardHeader>
@@ -163,7 +163,7 @@ const GetUsers = () => {
                         {brandmanagers.map((ele:any)=>(
                             
 
-                            <div key={ele._id} className='flex-1  p-6  shadow-md rounded-md'>
+                            <div key={`${ele.first_name}-${ele.last_name}`} className='flex-1  p-6  shadow-md rounded-md'>
 
                                 <Card>
                                 <CardHeader>
@@ -187,7 +187,7 @@ const GetUsers = () => {
                 <h1 className='font-semibold'>Audiophiles</h1>
                 <div className="flex justify-between flex-wrap ">
                         {audiophiles.map((ele:any)=>(
-                            <div key={ele._id} className='flex-1  p-6  shadow-md rounded-md'>
+                            <div key={`${ele.first_name}-${ele.last_name}`} className='flex-1  p-6  shadow-md rounded-md'>
 
                                 <Card>
                                 <CardHeader>
