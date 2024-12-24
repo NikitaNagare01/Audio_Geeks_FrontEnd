@@ -134,9 +134,7 @@ const GetUsers = () => {
             <div >
                 <h1 className='font-semibold'>Admin</h1>
                 <div className='flex justify-between flex-wrap'>
-                        {admins.map((ele:any)=>(
-                            
-
+                        {admins.map((ele:any)=>{ return(   
                             <div key={`${ele.first_name}-${ele.last_name}`} className='flex-1  p-6  shadow-md rounded-md'>
 
                                 <Card>
@@ -153,15 +151,14 @@ const GetUsers = () => {
                             </div>
                             
                             
-                        ))}
+                        );})}
                 </div>
             </div>
             <br/><br/><br/><br/>
             <div >
                 <h1 className='font-semibold'>Brand Manager</h1>
                 <div className='flex justify-between flex-wrap'>
-                        {brandmanagers.map((ele:any)=>(
-                            
+                        {brandmanagers.map((ele:any)=>{return(
 
                             <div key={`${ele.first_name}-${ele.last_name}`} className='flex-1  p-6  shadow-md rounded-md'>
 
@@ -179,14 +176,14 @@ const GetUsers = () => {
                             </div>
                             
                             
-                        ))}
+                        );})}
                 </div>
             </div>
             <br/><br/><br/><br/>
             <div>
                 <h1 className='font-semibold'>Audiophiles</h1>
                 <div className="flex justify-between flex-wrap ">
-                        {audiophiles.map((ele:any)=>(
+                        {audiophiles.map((ele:any)=>{return(
                             <div key={`${ele.first_name}-${ele.last_name}`} className='flex-1  p-6  shadow-md rounded-md'>
 
                                 <Card>
@@ -201,7 +198,7 @@ const GetUsers = () => {
                                 </CardFooter>
                             </Card>
                             </div>
-                        ))}
+                        );})}
                 </div>
 
             </div>
