@@ -139,7 +139,7 @@ const GetUsers = () => {
 
                             <div key={ele._id} className='flex-1  p-6  shadow-md rounded-md'>
 
-                                <Card>
+                                <Card key={ele._id}>
                                 <CardHeader>
                                 </CardHeader>
                                 <CardContent className='font-semibold'>
@@ -165,7 +165,7 @@ const GetUsers = () => {
 
                             <div key={ele._id} className='flex-1  p-6  shadow-md rounded-md'>
 
-                                <Card>
+                                <Card key={ele._id}>
                                 <CardHeader>
                                 </CardHeader>
                                 <CardContent className='font-semibold'>
@@ -189,7 +189,7 @@ const GetUsers = () => {
                         {audiophiles.map((ele:any)=>(
                             <div key={ele._id} className='flex-1  p-6  shadow-md rounded-md'>
 
-                                <Card>
+                                <Card key={ele._id}>
                                 <CardHeader>
                                 </CardHeader>
                                 <CardContent className='font-semibold'>
