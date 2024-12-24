@@ -132,10 +132,10 @@ const GetUsers = () => {
             <div >
                 <h1 className='font-semibold'>Admin</h1>
                 <div className='flex justify-between flex-wrap'>
-                        {admins.map((ele:any)=>(
+                        {admins.map((ele:any, index:any)=>(
                             
 
-                            <div key={ele._id} className='flex-1  p-6  shadow-md rounded-md'>
+                            <div key={ele._id || index} className='flex-1  p-6  shadow-md rounded-md'>
 
                                 <Card>
                                 <CardHeader>
@@ -158,10 +158,10 @@ const GetUsers = () => {
             <div >
                 <h1 className='font-semibold'>Brand Manager</h1>
                 <div className='flex justify-between flex-wrap'>
-                        {brandmanagers.map((ele:any)=>(
+                        {brandmanagers.map((ele:any, index:any)=>(
                             
 
-                            <div className='flex-1  p-6  shadow-md rounded-md'>
+                            <div key={ele._id || index} className='flex-1  p-6  shadow-md rounded-md'>
 
                                 <Card>
                                 <CardHeader>
@@ -184,8 +184,8 @@ const GetUsers = () => {
             <div>
                 <h1 className='font-semibold'>Audiophiles</h1>
                 <div className="flex justify-between flex-wrap ">
-                        {audiophiles.map((ele:any)=>(
-                            <div className='flex-1  p-6  shadow-md rounded-md'>
+                        {audiophiles.map((ele:any, index: any)=>(
+                            <div key={ele._id || index} className='flex-1  p-6  shadow-md rounded-md'>
 
                                 <Card>
                                 <CardHeader>
