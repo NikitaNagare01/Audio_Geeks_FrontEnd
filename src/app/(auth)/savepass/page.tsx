@@ -29,7 +29,15 @@ const userschema = z.object({
       .string()
       .min(1, "Password is required")
       .min(8, "Password must have at least 8 characters"),
-});
+}).refine(
+  (data) => {
+    return data.password === data.cpassword;
+  },
+  {
+    message: "Passwords do not match",
+    path: ["cpassword"],
+  }
+);
 
 const Page = () => {
   const router = useRouter();
@@ -110,7 +118,7 @@ const Page = () => {
                     <FormItem>
                       <FormLabel>Enter Password</FormLabel>
                       <FormControl >
-                        <Input
+                        <Input type="password"
                           placeholder=""
                           {...field}
                           
@@ -130,7 +138,7 @@ const Page = () => {
                     <FormItem>
                       <FormLabel>Confirm Password</FormLabel>
                       <FormControl >
-                        <Input
+                        <Input type="password"
                           placeholder=""
                           {...field}
                           

@@ -50,9 +50,10 @@ import Myprofile from '../(components)/Myprofile'
 import Editprofile from '../(components)/Editprofile'
 import Notificationprofile from '../(components)/Notificationprofile'
 import { headers } from 'next/headers'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import {Changeloggedinstate} from '@/provider/redux/loggedin'
 import { changerolestate } from '@/provider/redux/role'
+import GetUsers from '../(components)/GetUsers'
 
 
 const Page = () => {
@@ -65,12 +66,14 @@ const Page = () => {
   const [noti, setnoti] = useState(0);
   const [edit, setedit] = useState(0);
   const [tour, settour] = useState(0);
+  const [getuser, setgetuser] = useState(0);
   
 
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   const dispatch = useDispatch();
+  const role = useSelector((state:any)=>state.rolestate.role)
 
   const logout =()=>{
     localStorage.removeItem('token');
@@ -136,7 +139,7 @@ const Page = () => {
             <Link
               href="#"
               className={clsx("flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary", {"flex items-center gap-3 rounded-lg bg-muted px-3 py-2 text-primary transition-all hover:text-primary" : pathname === "/profile"})}
-              onClick={()=> {setnoti(0); setedit(0); settour(0)}}
+              onClick={()=> {setnoti(0); setedit(0); settour(0); setgetuser(0)}}
             >
               <Home className="h-4 w-4" />
               My Profile
@@ -144,7 +147,7 @@ const Page = () => {
             <Link
               href="#"
               className={clsx("flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary", {"flex items-center gap-3 rounded-lg bg-muted px-3 py-2 text-primary transition-all hover:text-primary" : noti === 1})}
-              onClick={()=> {setnoti(1); setedit(0); settour(0)}}
+              onClick={()=> {setnoti(1); setedit(0); settour(0); setgetuser(0)}}
             >
               <Bell className="h-4 w-4" />
               Notification
@@ -156,7 +159,7 @@ const Page = () => {
             <Link
               href="#"
               className={clsx("flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary", {"flex items-center gap-3 rounded-lg bg-muted px-3 py-2 text-primary transition-all hover:text-primary" : edit===1})}
-              onClick={()=> {setnoti(0); setedit(1); settour(0)}}
+              onClick={()=> {setnoti(0); setedit(1); settour(0); setgetuser(0)}}
             >
               <Edit className="h-4 w-4" />
               Edit
@@ -164,11 +167,21 @@ const Page = () => {
             <Link
               href="#"
               className={clsx("flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary", {"flex items-center gap-3 rounded-lg bg-muted px-3 py-2 text-primary transition-all hover:text-primary" : tour===1})}
-              onClick={()=> {setnoti(0); setedit(0); settour(1)}}
+              onClick={()=> {setnoti(0); setedit(0); settour(1); setgetuser(0)}}
             >
               <Map className="h-4 w-4" />
               Tour
             </Link>
+            {role === "Admin" && 
+              <Link
+                href="#"
+                className={clsx("flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary", {"flex items-center gap-3 rounded-lg bg-muted px-3 py-2 text-primary transition-all hover:text-primary" : getuser===1})}
+                onClick={()=> {setnoti(0); setedit(0); settour(0); setgetuser(1)}}
+              >
+                <Map className="h-4 w-4" />
+                See Users
+              </Link>
+            }
           </nav>
         </div>
         <div className="mt-auto p-4">
@@ -207,7 +220,7 @@ const Page = () => {
             <Link
               href="#"
               className={clsx("flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary", {"flex items-center gap-3 rounded-lg bg-muted px-3 py-2 text-primary transition-all hover:text-primary" : pathname === "/profile"})}
-              onClick={()=> {setnoti(0); setedit(0); settour(0)}}
+              onClick={()=> {setnoti(0); setedit(0); settour(0); setgetuser(0)}}
             >
               <Home className="h-4 w-4" />
               My Profile
@@ -215,7 +228,7 @@ const Page = () => {
             <Link
               href="#"
               className={clsx("flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary", {"flex items-center gap-3 rounded-lg bg-muted px-3 py-2 text-primary transition-all hover:text-primary" : noti === 1})}
-              onClick={()=> {setnoti(1); setedit(0); settour(0)}}
+              onClick={()=> {setnoti(1); setedit(0); settour(0); setgetuser(0)}}
             >
               <Bell className="h-4 w-4" />
               Notification
@@ -227,7 +240,7 @@ const Page = () => {
             <Link
               href="#"
               className={clsx("flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary", {"flex items-center gap-3 rounded-lg bg-muted px-3 py-2 text-primary transition-all hover:text-primary" : edit===1})}
-              onClick={()=> {setnoti(0); setedit(1); settour(0)}}
+              onClick={()=> {setnoti(0); setedit(1); settour(0); setgetuser(0)}}
             >
               <Edit className="h-4 w-4" />
               Edit
@@ -235,11 +248,21 @@ const Page = () => {
             <Link
               href="#"
               className={clsx("flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary", {"flex items-center gap-3 rounded-lg bg-muted px-3 py-2 text-primary transition-all hover:text-primary" : tour===1})}
-              onClick={()=> {setnoti(0); setedit(0); settour(1)}}
+              onClick={()=> {setnoti(0); setedit(0); settour(1); setgetuser(0)}}
             >
               <Map className="h-4 w-4" />
               Tour
             </Link>
+            {role === "Admin" && 
+              <Link
+                href="#"
+                className={clsx("flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary", {"flex items-center gap-3 rounded-lg bg-muted px-3 py-2 text-primary transition-all hover:text-primary" : getuser===1})}
+                onClick={()=> {setnoti(0); setedit(0); settour(0); setgetuser(1)}}
+              >
+                <Map className="h-4 w-4" />
+                See Users
+              </Link>
+            }
             </nav>
             <div className="mt-auto">
               <Card>
@@ -314,10 +337,14 @@ const Page = () => {
               <h3 className="text-2xl font-bold tracking-tight">
                 Tour
               </h3>
-            ) : 
-            <div>
-              <Myprofile profile={profile}/>
-            </div>
+            ) : getuser ? (
+              <GetUsers/>
+            ) : (
+
+              <div>
+                <Myprofile profile={profile}/>
+              </div>
+            )
             }
             
             <p className="text-sm text-muted-foreground">

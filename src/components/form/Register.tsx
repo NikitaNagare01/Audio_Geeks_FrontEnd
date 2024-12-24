@@ -158,8 +158,13 @@ const Register = () => {
     console.log(data);
     // sessionStorage.setItem("rtoken", data.token);
     alert(data.message);
+    if(role==="Admin"){
+      router.push('/profile');
+    }else{
 
-    router.push("/login");
+      router.push("/login");
+    }
+
   };
 
   return (
@@ -345,7 +350,7 @@ const Register = () => {
                     <FormItem>
                       <FormLabel>Password</FormLabel>
                       <FormControl>
-                        <Input placeholder="" {...field} />
+                        <Input type="password" placeholder="" {...field} />
                       </FormControl>
 
                       <FormMessage />
@@ -362,7 +367,7 @@ const Register = () => {
                     <FormItem>
                       <FormLabel>Confirm Password</FormLabel>
                       <FormControl>
-                        <Input placeholder="" {...field} />
+                        <Input type="password" placeholder="" {...field} />
                       </FormControl>
 
                       <FormMessage />
