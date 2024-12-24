@@ -52,6 +52,7 @@ const GetUsers = () => {
 
     useEffect(()=>{
         fetchData();
+        // eslint-disable-next-line
     }
     ,[fetchData])
 
@@ -63,6 +64,7 @@ const GetUsers = () => {
         setadmins(adminfilter);
         const brandmanagerfilter = getusers.filter((ele:any)=>ele.role==="Brand Manager");
         setbrandmanagers(brandmanagerfilter);
+        // eslint-disable-next-line
     }, [getusers])
 
 
