@@ -135,7 +135,7 @@ const GetUsers = () => {
                         {admins.map((ele:any)=>(
                             
 
-                            <div className='flex-1  p-6  shadow-md rounded-md'>
+                            <div key={ele._id} className='flex-1  p-6  shadow-md rounded-md'>
 
                                 <Card>
                                 <CardHeader>
